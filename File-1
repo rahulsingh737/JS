@@ -1,0 +1,25 @@
+var ws = new WebSocket('wss://10.198.161.107:5001/service');
+
+ws.onopen = function(event)
+{
+})
+
+ws.onerror = function(event)
+{
+})
+
+ws.onclose = function(event)
+{
+})
+
+ws.onmessage = function(event)
+{
+})
+
+ws.send(JSON.stringify(
+	{
+		"message": text,
+		"action": "hi"
+	}
+));
+
