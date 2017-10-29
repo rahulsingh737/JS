@@ -1,0 +1,48 @@
+var app = angular.module("myApp", ["ngRoute"]);
+	app.run(function($rootScope) {
+		$rootScope.lastName = "Doe";
+	});
+	
+app.config(function($httpProvider) {
+      $httpProvider.defaults.useXDomain = true;
+      delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  });	
+  
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "home.html",
+		controller : "homeCtrl"
+    })
+    .when("/listApps", {
+        templateUrl : "listApps.html",
+        controller : "listCtrl"
+    })
+    .when("/moveApps", {
+        templateUrl : "moveApps.html",
+        controller : "moveCtrl"
+    })
+});
+
+app.service('srcDst', function($http,$q) {
+var source = "";
+var target = "";
+    this.setSrcDst = function (x,y) {
+		source = x;
+		target = y;
+		console.log(source+","+target);
+		return null;
+    };
+	
+	this.getSrc = function () {
+		return source;
+    };
+	
+	this.getDst = function () {
+		return target;
+    };
+});
+
+app.controller("homeCtrl", function($scope,$http,$window,$location,srcDst) {
+})
+
